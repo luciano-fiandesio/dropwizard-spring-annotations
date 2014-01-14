@@ -1,14 +1,14 @@
 package com.github.pnayak.dropwizard.spring;
 
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.yammer.dropwizard.Service;
-import com.yammer.dropwizard.config.Bootstrap;
-import com.yammer.dropwizard.config.Configuration;
-import com.yammer.dropwizard.config.Environment;
+import io.dropwizard.Application;
+import io.dropwizard.Configuration;
 
 
-public abstract class SpringService<T extends Configuration> extends Service<T> {
+public abstract class SpringService<T extends Configuration> extends Application<T> {
 
 	protected AnnotationConfigApplicationContext appContext;
 
@@ -24,6 +24,10 @@ public abstract class SpringService<T extends Configuration> extends Service<T> 
 		return new AnnotationConfigApplicationContext();
 	}
 
+    @Override
+    public String getName() {
+        return serviceName;
+    }
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -33,7 +37,7 @@ public abstract class SpringService<T extends Configuration> extends Service<T> 
 	 */
 	@Override
 	public void initialize(Bootstrap<T> bootstrap) {
-		bootstrap.setName(serviceName);
+		//bootstrap.setName(serviceName);
 	}
 
 	/*

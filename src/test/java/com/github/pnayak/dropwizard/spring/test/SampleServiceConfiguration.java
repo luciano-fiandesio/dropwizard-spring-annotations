@@ -1,7 +1,7 @@
 package com.github.pnayak.dropwizard.spring.test;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yammer.dropwizard.config.Configuration;
+import io.dropwizard.Configuration;
 
 public class SampleServiceConfiguration extends Configuration {
 
